@@ -13,6 +13,7 @@ BuildRequires:	rpm-utils
 BuildRequires:	rpmbuild(macros) >= 1.595
 Requires:	jre
 Conflicts:	WowzaMediaServer
+ExclusiveArch:	%{x8664}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # already stripped
