@@ -23,8 +23,11 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # list of files (regexps) which don't generate Provides
 %define		_noautoprovfiles	%{_appdir}/lib-native
+#  libva.so.1(VA_API_0.34.0) does not solve currently in PLD
+%define		req_libva			'libva.so.1(VA_API_0.34.0)'
 %define		req_syslibs  		libgcc_s.so.1 libogg.so.0 libstdc++.so.6 libvorbis.so.0 libvorbisenc.so.2
-%define		_noautoreq  		%{req_syslibs} libcudart.so.5.0 libcudawrapper.so libiomp5.so libmc_.*.so libwms-.*.so
+%define		req_wms				libcudart.so.5.0 libcudawrapper.so libiomp5.so libmc_.*.so libwms-.*.so
+%define		_noautoreq  		%{req_wms} %{req_syslibs} %{req_va}
 
 %description
 Wowza Media Server.
