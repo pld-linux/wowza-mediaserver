@@ -44,7 +44,7 @@ mv usr/local/WowzaMediaServer-%{version} wowza
 mv wowza/{examples,legal,documentation,README.html} .
 
 # extract license
-lineno=$(grep -n '^EOF$' src.bin | cut -d: -f1)
+lineno=$(grep -an '^EOF$' src.bin | cut -d: -f1)
 head -n +$((lineno + 1)) src.bin | sed -ne '/EOF/,/^EOF$/p' | grep -v EOF > LICENSE.txt
 
 %ifos Linux
